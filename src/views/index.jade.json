@@ -1,0 +1,37 @@
+{
+    "head": {
+        "imgpath": "_path_.jpg",
+        "subtitle": "subtitle",
+        "title": "title",
+        "description": "description"
+    },
+    "name": "test_jade_",
+    "items": [{
+        "title": "section-1",
+        "name": "Daredevil",
+        "stats_DEBUT": 1964,
+        "stats_POWER": "Superhuman Senses",
+        "description": "Sex sells; perhaps that is why the executives have not given Wolverine a beer gut.",
+        "author": "Alex Maleev (Artist)",
+        "firstImg": "_firstImgPath_",
+        "lastImg": "_lastImgPath_"
+    }, {
+        "title": "section-2",
+        "name": "Daredevil",
+        "stats_DEBUT": 1964,
+        "stats_POWER": "Superhuman Senses",
+        "description": "Sex sells; perhaps that is why the executives have not given Wolverine a beer gut.",
+        "author": "Alex Maleev (Artist)",
+        "firstImg": "_firstImgPath_",
+        "lastImg": "_lastImgPath_"
+    }, {
+        "title": "section-3",
+        "name": "Daredevil",
+        "stats_DEBUT": 1964,
+        "stats_POWER": "Superhuman Senses",
+        "description": "Sex sells; perhaps that is why the executives have not given Wolverine a beer gut.",
+        "author": "Alex Maleev (Artist)",
+        "firstImg": "_firstImgPath_",
+        "lastImg": "_lastImgPath_"
+    }]
+}

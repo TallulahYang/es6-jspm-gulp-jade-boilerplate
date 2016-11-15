@@ -1,0 +1,9 @@
+# Debug.
+npm-debug.log
+
+# External libraries.
+node_modules
+src/jspm_packages
+
+# Compiled css.
+src/css

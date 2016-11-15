@@ -1,0 +1,43 @@
+#skrollr-body
+	article#main-article
+		header#main-header
+			#header-image
+				//- .color
+				.chapter02
+					.divide
+				.fade-in.one
+					.bgfadein
+				.headeronetitle
+					p.subtitle.fade-in.two !{head.subtitle}
+					.fade-in.two
+						.headerline1
+					p.title.fade-in.two !{head.title}
+					p.descr.fade-in.three #{head.description}
+					div(data-src=head.imgpath class="headerone fade-in four")
+						img(src="#{head.imgpath}", alt="")
+					.fade-in.four
+						.headerline2
+					p.scrolldown.fade-in.four SCROLL DOWN
+					.sdarrow.fade-in.four
+		each item,i in items
+			section(id="section-#{i}")
+				.titleleft
+					.titleinner
+						h2 #{item.title}
+						.stats
+							.infos 
+								span.cover Original Cover: 
+								span.numbs #{item.stats_numbs}
+							.dates
+								span #{item.stats_date}
+						p.descr !{item.description}
+				.slideContainer
+					.reveal Slide to reveal
+					.slide
+						div(data-src="#{ item.firstImg }" class="imgfirst preload")
+						div(data-src="#{ item.lastImg }" class="imglast preload")
+				.sectionbar
+#back-top-footer
+	a.back-top(href="#")
+		img(src='images/backtotop2.png')
+		.back-top-txt

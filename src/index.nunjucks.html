@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="view" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="googlebot" content="noodp">
+    <meta name="robots" content="index, follow">
+    <title>{{name}}</title>
+    <meta name="description" content="es6-jspm-gulp-boilerplate">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <article id="main-article">
+        <article id="main-article">
+            <header id="main-header">
+                {{ head.subtitle}}
+            </header>
+            {% for item in items %}
+            <section id="{{ item.title }}">
+                <div class="titleleft">
+                    <div class="titleinner">
+                        <h2>{{ item.title}}</h2>
+                        <div class="stats">
+                            <li>DEBUT: <span>{{ item.stats_DEBUT}}</span></li>
+                            <li>POWER: <span>{{ item.stats_POWER}}</span></li>
+                            <li></li>
+                        </div>
+                        <div class="artistq">
+                            {{ item.description}}
+                            <span> -{{ item.author}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">Slide to reveal</div>
+                <div class="slide">
+                    <div class="imgfirst preload" data-src="{{ item.firstImg}}"></div>
+                    <div class="imglast preload" data-src="{{ item.lastImg}}"></div>
+                </div>
+                <div class="sectionbar"></div>
+            </section>
+            {% endfor %}
+        </article>
+        <div class='back-top-footer'>
+            <a id="back-top">
+                <img src="images/backtotop2.png" width="100px">
+                <div class="back-top-txt"></div>
+            </a>
+        </div>
+    </article>
+    </script>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+    System.import('./js/app')
+        // .then(function(app) {
+        //     app.init();
+        // });
+    </script>
+</body>
+
+</html>
