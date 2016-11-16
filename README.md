@@ -6,7 +6,7 @@ es6-jspm-gulp-boilerplate
 
 - This project uses npm `$ npm install npm -g.`
 - This project uses JSPM `$ npm install jspm -g`
-- This project uses JSPM `JADE/PUG`
+- This project uses `JADE/PUG`
 
 ---
 
