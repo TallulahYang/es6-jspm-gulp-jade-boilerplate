@@ -15,19 +15,21 @@ global.paths = {
 
     'js': './src/js/**/*.js',
 
-    'sass': './src/scss/**/*.scss',
+    'sass': './src/scss/app.scss',
 
-    'img': './src/images/*',
+    'img': './src/images/**/*',
 
     'fonts': './src/fonts/**/*',
 
     'src': './src',
 
-    'views': './src/views/*',
+    'views': './src/views/modules/**/*.jade',
+
+    'datas': './src/views/modules/**/**/*.json',
 
     'css': './src/css',
 
-    'dist': './dist'
+    'dist': './deploy'
 };
 
 var knownOptions = {
@@ -42,7 +44,7 @@ var options = minimist(process.argv.slice(2), knownOptions);
 requireDir('./gulp', { recurse: false });
 
 // dev use jade and preCompile
-gulp.task('development', ['sass', 'js', 'images', 'fonts', 'jadeTohtml', 'watch']);
+gulp.task('development', ['sass', 'js', 'images', 'fonts', 'jadeTohtml:dev', 'watch']);
 
 //dev use hotupdate 
 gulp.task('hot', ['sass', 'js', 'images', 'fonts', 'jadeParseHot', 'jadeToJS', 'watch_hot']);

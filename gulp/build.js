@@ -15,13 +15,16 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify');
 
 // One build task to rule them all.
-
+var sassOptions = {
+    errLogToConsole: true,
+    outputStyle: 'expanded'
+};
 
 gulp.task('release',['buildhot']);
 
 // hotupdate
 gulp.task('buildhot', function (done) {
-  runSeq('clean', ['buildJadeHot','jadeTohtmlHot', 'jadeToJS', 'buildsass', 'buildimg', 'buildjs:hot', 'buildfonts'], 'buildhtmlHot', done);
+  runSeq('clean', ['buildJadeHot','jadeTohtmlHot', 'jadeToJS', 'buildsass', 'buildimg', 'buildjs', 'buildfonts'], 'buildhtml', done);
 });
 
 // normal build and precompile
@@ -38,13 +41,18 @@ gulp.task('buildJadeHot',function() {
 
 })
 
+gulp.task('buildAni',()=>{
+  gulp.src("src/js/animation/*.js")
+    .pipe(gulp.dest(global.paths.dist + '/js/animation'));
+});
 // Build SASS for distribution.
 gulp.task('buildsass', function () {
-  return  gulp.src(global.paths.sass)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(concat('app.css'))
+  return gulp.src(global.paths.sass)
+    // .pipe(sourcemaps.init())
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    // .pipe(concat('app.css'))
     .pipe(autoprefixer())
-    .pipe(cssNano())
+    // .pipe(sourcemaps.write('.'))
     .pipe(rename({
       suffix: '.min'
     }))
@@ -52,48 +60,24 @@ gulp.task('buildsass', function () {
 });
 
 // Build JS for distribution.
-gulp.task('buildjs:hot', function () {
-  return  gulp.src('./src/js/app_hot.js')
-    .pipe(jspm({
-      selfExecutingBundle: true,
-      minify: true,
-      skipSourceMaps: true
-    }))
-    .pipe(rename('app.min.js'))
-    .pipe(gulp.dest(global.paths.dist));
-});
+gulp.task('buildjs', ['buildAni'],function () {
+  var sourcemaps = require('gulp-sourcemaps');
 
-// Build JS for distribution.
-gulp.task('buildjs', function () {
-  return  gulp.src('./src/js/app.js')
-    .pipe(jspm({
-      selfExecutingBundle: true,
-      minify: true,
-      skipSourceMaps: true
-    }))
-    .pipe(rename('app.min.js'))
-    .pipe(gulp.dest(global.paths.dist));
-});
-
-gulp.task('buildhtmlHot',function () {
-  return  gulp.src(global.paths.html_rst)
-    .pipe(replace('css/app.css', 'css/app.min.css'))
-    .pipe(replace('jspm_packages/system.js', 'app.min.js')) 
-    .pipe(replace('<script src="config.js"></script>', ''))
-    .pipe(replace('<script src="app.min.js"></script>', '<script src="lib/runtime.js"></script><script src="app.min.js"></script>'))
-    .pipe(replace("System.import('./js/app')", ''))
-    // .pipe(htmlMin({collapseWhitespace: true}))
-    .pipe(gulp.dest(global.paths.dist));
+    return gulp.src('./src/js/app.js')
+        // .pipe(sourcemaps.init())
+        .pipe(jspm({
+          selfExecutingBundle: true,
+          minify: true//,
+          // skipSourceMaps: true 
+        }))
+        .pipe(rename('app.min.js'))
+        // .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(global.paths.dist + '/js'));
 });
 
 // Build HTML for distribution.
 gulp.task('buildhtml',function () {
   return  gulp.src(global.paths.html_rst)
-    .pipe(replace('css/app.css', 'css/app.min.css'))
-    .pipe(replace('jspm_packages/system.js', 'app.min.js')) 
-    .pipe(replace('<script src="config.js"></script>', ''))
-    .pipe(replace("System.import('./js/app')", ''))
-    // .pipe(htmlMin({collapseWhitespace: true}))
     .pipe(gulp.dest(global.paths.dist));
 });
 
