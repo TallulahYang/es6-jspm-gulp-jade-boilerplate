@@ -1,0 +1,51 @@
+doctype html
+//[if lt IE 8 ]>  <html class="no-js ie lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]
+//[if IE 8]>  <html class="no-js ie lt-ie10 lt-ie9" lang="en"> <![endif]
+//[if IE 9]>  <html class="no-js ie lt-ie10" lang="en"> <![endif]
+//[if (gt IE 9)|!(IE)]><!
+html(class="no-js", lang="en")
+  //<![endif]
+  
+  head
+
+    block title
+    include meta.html
+    include fonts.html
+
+    //- include polyfills for IE 8 and below
+    //- //[if lt IE 9 ]> <script src="assets/bundle/entry/polyfills.js"></script> <![endif]
+    
+    //- Include page dependencies
+    link(rel="stylesheet" href="css/app.min.css")
+    
+    //- include analytics.html
+
+body(class="page-index")
+        //- production/dev
+        //- preCompile/ hotUpdate
+
+        -var env = 'production'
+        -var pre = 'preCompile'
+        
+        article#main-article
+            if pre === 'preCompile'
+                block content
+        script.
+            var ishot = false;
+
+        if env !== 'production'
+            script(src='views/core/lib/TweenMax.min.js')
+            //- script(src='views/core/lib/createjs-2015.11.26.min.js')
+            script(src='jspm_packages/system.js')
+            script(src='config.js')
+            if pre !== 'preCompile' 
+                script(src='js/runtime.js')
+            script.
+                System.import('./js/app')
+
+        else
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js')
+            //- script(src='https://code.createjs.com/createjs-2015.11.26.min.js')
+            if pre !== 'preCompile'
+                script(src='js/runtime.js')
+            script(src='js/app.min.js')

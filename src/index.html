@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 8 ]>  <html class="no-js ie lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>  <html class="no-js ie lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>  <html class="no-js ie lt-ie10" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+  <!--<![endif]-->
   <head>
-    <title>es6-jspm-gulp-boilerplate</title>
-    <meta name="description" content="es6-jspm-gulp-boilerplate">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Loreal Demo</title>    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" id="view" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="googlebot" content="noodp">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="css/app.css">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/app.min.css">
   </head>
 </html>
-<body id="bodyonline">
+<body class="page-index">
   <article id="main-article">
+    <div class="main-story">
+      <div id="madecanvas" width="250" height="250" class="lower-canvas"></div>
+      <div id="upcanvas" width="250" height="250" class="upper-canvas"></div>
+      <div class="upload button">upload</div>
+      <div class="camera button">camera</div>
+    </div>
   </article>
-  <script src="jspm_packages/system.js"></script><script src="config.js"></script><script src="./js/runtime.js"></script><script>System.import("./js/app_hot")</script>
+  <script>
+    var ishot = false;
+    
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="js/app.min.js"></script>
 </body>
